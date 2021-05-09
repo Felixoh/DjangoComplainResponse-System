@@ -1,0 +1,20 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Response</title>
+</head>
+<body>
+{% block content %}
+<h3>Response Page</h3>
+
+{% for res in complainobj %}
+<p>{{res.comment}}</p>
+<p>{{res.reply}}</p>
+<p>{{res.status}}</p>
+<p>{{res.date_created}}</p>
+{% endfor %}
+{% endblock content %} 
+</body>
+</html>

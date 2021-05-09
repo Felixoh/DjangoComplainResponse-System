@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF output</title>
+    <style>
+        @page{
+            size: "A4";
+            margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+        @top-center{
+                content:"COMPANY NAME";
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- content for static frame data that will be viewed by the user as he will be interacting with data-->
+<div id="header-content">
+    <h3>Dennis Ivanovich</h3>
+</div>
+    <table>
+    {% for dt in data %}
+     <tr>
+        <td>{{ dt.company }}</td>
+        <td>{{ dt.address }}</td>
+        <td>{{ dt.city }}</td>
+     </tr>
+     {% endfor %}
+    </table>
+</body>
+</html

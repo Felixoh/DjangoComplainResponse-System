@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LoginPage</title>
+</head>
+<body>
+{% block content %}
+
+<div class="container">
+	<div class="jumbotron text-center">
+		<form method="POST" action="{% url 'login' %}">
+		{% csrf_token %}
+			<h3><center><i>Login</i></center></h3> 
+			<div class="form-group">
+				<input class="form-control" type="text" name="username" placeholder="Username">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" name="password" placeholder="Password"><br/>
+			</div>
+			<div class="form-group">
+				<!--catching errors that will arise from submitted data-->
+			</div>
+			<div class="form-group">
+				<center><input class="btn btn-primary btn-block" type="submit" name="" value="Login Now"/></center>
+			</div>
+			<div class="form-group">
+				<center><p>Not Registered ?<a href="{% url 'register' %}"><strong>Register</strong></a></p></center>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock content %}
+</body>
+</html> 

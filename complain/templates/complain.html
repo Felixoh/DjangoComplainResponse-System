@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Complain Form</title>
+</head>
+<body>
+{% block content %}
+<div class="row">
+	<div class="col-sm-4">
+		<hr>
+		<div class="row"> 
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header bg-info">
+						<b>Welcome</b>
+					</div>
+					<div class="card-body">
+						{{user}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header bg-info">
+						<b>Email</b>
+					</div>
+					<div class="card-body">
+						{{user.email}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<h3><i><u>File your Complain : </u></i></h3>
+			<div class="border border-info text-center rounded" style="padding-left: 1.2em;padding-right: 1.2em;padding-top: 1.2em;">
+				<form method="post">
+				{% csrf_token %}
+				<div class="form-group">
+					{{form.as_p}}
+				</div>
+				<div class="form-group">
+					<input class="btn btn-md btn-info" type="submit" name="" value="Submit Complain">
+				</div>
+				</form>	
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-8">
+				<button class="btn btn-lg btn-danger btn-block"><a href="{% url 'logout' %}">Logout</a></button>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-8">
+			<div class="col-lg-4" style="font-weight: 300;font-style: italic;text-align: center;">
+						<h4>Response statuses:</h4>
+			</div>
+			<div class="row">
+						<div class="card-deck">
+							<div class="card text-white bg-secondary border-danger">
+								<div class="card-header bg-info"><h5><center>All Complains Filed</center></h5></div>
+								<div class="card-body text-center">
+									<h5>{{complain_count}}</h5>
+								</div>
+							</div>						
+							<div class="card text-white bg-secondary border-danger">
+								<div class="card-header bg-info"><h5><center>Pending Complains</center></h5></div>
+								<div class="card-body text-center">
+									<h5>{{countpending}}</h5>
+								</div>
+							</div>
+							<div class="card text-white bg-secondary border-danger">
+								<div class="card-header bg-info"><h5><center>Responded Complains</center></h5></div>
+								<div class="card-body text-center">
+									<h5>{{countresponded}}</h5>
+								</div>
+							</div>
+						</div>		
+			</div>
+		<hr>
+		<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+					<!--
+						<div class="col-md-8"><button class="btn btn-lg"><a href="{% url "printToPdf" user.id  %}">Print Complain Reports</a></button></div>
+					-->
+					</div>
+				</div>
+		</div>
+		<hr>
+		<div class="row">
+				<h4><i>Filed Complains</i></h4>
+				<hr>
+				<table class="table table-sm  table-striped table-hover">
+					<tr>
+						<th>DateSubmitted:</th>
+						<th>Location</th>
+						<th>complainTo</th>
+						<th>MoreInfo</th>
+						<th>Intermediate Response from County</th>
+						<th>Delete</th>
+					</tr>
+					{% for complain in complains %}
+					<tr>
+						<td>{{complain.date_created}}</td>
+						<td>{{complain.location}}</td>
+						<td>{{complain.complains}}</td>
+						<td>{{complain.comment}}</td>
+						<td>{{complain.Complain_response}}</td>
+						<td><button class="btn btn-sm btn-danger"><a href="{% url 'delete' complain.id %}">Delete</a></button></td>
+					</tr>
+					{% endfor %}
+				</table>
+		</div>
+		<hr>
+		<div class="row">
+			<h4><i>Response From County</i></h4>
+			<hr>
+			<table class="table table-sm table-hover table-striped">
+				<tr>
+					<th>Date_created</th>
+					<th>Comment</th>
+					<th>Reply</th>
+					<th>Status</th>
+					<th>Delete</th>
+				</tr>
+				{% for resp in responses %}
+				<tr>
+					<td>{{resp.date_created}}</td>
+					<td>{{resp.comment}}</td>
+					<td>{{resp.reply}}</td>
+					<td><button class="btn btn-info btn-sm">{{resp.status}}</button></td>
+					<td><button class="btn btn-sm btn-danger">Delete</button></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+<hr>
+{% endblock content %}
+</body>
+</html>

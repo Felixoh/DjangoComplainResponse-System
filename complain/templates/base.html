@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-\,reboot.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-reboot.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<style>
+.img-style{
+	width:400px;
+	height:300px;
+	border-radius: 10px;
+	backface-visibility: 1.2em;
+}
+.img-style:hover{
+	opacity:0.7;
+}
+</style>
+</head>
+<body>
+<div class="container-fluid">
+	{% include 'navbar.html' %}
+	<hr>
+</div>
+<div class="container">
+	{% block content %}
+	<div class="carousel slide" data-ride="carousel">
+		<!--Indicators -->
+		<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+		</ul>
+		<!--The slideshow pictures displayed here show here -->
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img style="border-radius:4px;" src="{% static 'images/slide01.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img src="{% static 'images/slide02.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img src="{% static 'images/slide03.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img src="{% static 'images/slide04.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img src="{% static 'images/slide05.jpg' %}">
+			</div>
+		</div>
+
+		<!--Left and right controls to the keyboard -->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev">
+			<span class="carousel-control-prev-icon"><img src="{% static 'images/right-aero.png' %}"></span>
+		</a>
+		<a  class="carousel-control-next" href="#" data-slide="next">
+			<span class="carousel-control-next-icon">
+				<img src="{% static 'images/right-aero.png' %}">
+			</span>
+		</a>
+		
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-header bg-info">
+		   		<h2>County Amenities</h2>
+		   	 	</div>
+			  	<div class="card-body">
+			  	<img  class="img-style" src="{% static 'images/hospital.jpg' %}">
+			  		<div class="card-text">
+			  		<h6>Referral Hospitals</h6>
+			  	</div>
+			  	</div>
+				  
+				<div class="card-body">
+			  	<img class="img-style" src="{% static 'images/doctors.jpg' %}">
+			  		<div class="card-text">
+			  		<h6>Advanced Medical Care</h6>
+			  		</div>
+			  	</div>
+			 	<div class="card-body">
+			  	<img class="img-style" src="{% static 'images/roads.jpg' %}">
+			  		<div class="card-text">
+			  		<h6>Upcoming Road Projects </h6>
+			 		</div>
+			  	</div>
+
+			  	<div class="card-body">
+			  	<img class="img-style" src="{% static 'images/technology.jpg' %}">
+			  		<div class="card-text">
+			  		<h6>ICT and Youth empowerment</h6>
+			 		</div>
+			  	</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+				<div class="card">
+					<div class="card-header bg-info"><h2>More Info </h2></div>
+				<div class="card-body">
+					<div class="card-header"><b>Our Location</b></div>
+					<p>
+						Kisii County is one of the forty seven Counties of Kenya. It shares common borders with Nyamira County to the North East, Narok County to the South and Homabay and Migori Counties to the West.The County lies between latitude 00 30’ and 100 South and longitude 340 38’ and 350 East.It covers an area of 1,302km2, a population of 1,152,282 people as per the 2009 census.
+					</p>
+				</div>
+				<div class="card-body">
+					<div class="card-header"><b>Complain Handling Portal</b></div>
+					<div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+  							<strong>Key Event !</strong> Advanced automated online Complain Resolution.
+					</div>
+					<p>The county has worked on a new smart project to bring about Complain Resolution and Responses at a super first Speed.
+					The System shall only collect few relevant data and resolution to complain shall be responded on ttime.Feel freee to comment and file your key 
+					concerns and they shall be processed.
+					</p>
+					<div class="row">
+					<div class="col-sm-6">
+						<p><button class="btn btn-lg btn-danger"><a href="{% url 'register' %}">Register with Us</a></button></p>
+					</div>
+					<div class="col-sm-6">
+						<p><button class="btn btn-lg btn-warning"><a href="{% url 'login' %}">Login Page</a></button></p>
+					</div>
+					<div class="col-sm-6">
+						<p><button class="btn btn-lg btn-secondary"><a href="{% url 'help' %}">How to use the System</a></button></p>
+					</div>
+
+				</div>
+				</div>
+				<div class="card-body">
+					<div class="card-header"><b>Key Events Ongoing></b</div><br>
+					<p>The following key events are underway in the Kisii County Government up on the 2021 Calender</p>
+				</div>
+				</div>
+				<hr>
+		</div>
+	</div>
+	<hr>
+	
+	<hr>
+	{% endblock content %}
+ <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+ <script type="text/javascript" src="{% static 'js/slider-setting.js' %}"></script>
+ <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+ <script type="text/javascript" src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+</div>
+</body>
+</html>
